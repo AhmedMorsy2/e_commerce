@@ -4,6 +4,7 @@ import url from "../../api";
 import Category from "../Category/Category";
 import { useQuery } from "react-query";
 import Loading from "../Loading/Loading";
+import { Helmet } from "react-helmet";
 
 export default function Categories() {
   function getCategories() {
@@ -19,6 +20,10 @@ export default function Categories() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Categories</title>
+      </Helmet>
       <div className="container-fluid main-margin">
         <div className="row g-2">
           {data?.data.data.map((item) => {

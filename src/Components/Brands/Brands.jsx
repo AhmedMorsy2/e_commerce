@@ -5,6 +5,7 @@ import Brand from "../Brand/Brand";
 import Loading from "../Loading/Loading";
 import { useQuery } from "react-query";
 import Pagination from "react-js-pagination";
+import { Helmet } from "react-helmet";
 
 export default function Brands() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -31,6 +32,10 @@ export default function Brands() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Brands</title>
+      </Helmet>
       <div className="container-fluid main-margin">
         <div className="row g-2">
           {currentItems.map((item) => {

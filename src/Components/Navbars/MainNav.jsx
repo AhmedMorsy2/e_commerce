@@ -77,7 +77,7 @@ export default function MainNav() {
                     >
                       <i className="fa-solid fa-user me-1"></i> Profile
                     </NavLink>
-                    <ul className="dropdown-menu  ">
+                    <ul className="dropdown-menu p-2 font-sm bg-body-tertiary border-0 brdrshdow ">
                       <li className="nav-item">
                         <NavLink
                           className="nav-link"
@@ -86,7 +86,7 @@ export default function MainNav() {
                           Change Password
                         </NavLink>
                       </li>
-                     
+
                       <li className="nav-item">
                         <NavLink
                           className="nav-link"

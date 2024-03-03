@@ -3,6 +3,7 @@ import { cartContext } from "../../Context/CartContextProvider";
 import Loading from "../Loading/Loading";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 export default function Wishlist() {
   let {
@@ -61,57 +62,63 @@ export default function Wishlist() {
     );
   }
   return (
-    <div className="main-margin container-fluid">
-      <div className="row g-2">
-        {data?.data.map((item) => {
-          return (
-            <div
-              className="col-md-4 col-lg-2 product cursor-pointer rounded-3 p-4 position-relative mx-2"
-              key={item._id}
-            >
-              <Link to={`/product-details/${item._id}`}>
-                <img
-                  src={item.imageCover}
-                  className="w-100"
-                  alt="Product_png"
-                />
-                <span className="text-main font-sm mt-2">
-                  {item.category.name}
-                </span>
-                <h5 className="fw-bold my-2">
-                  {item.title.split(" ").slice(0, 3).join(" ")}
-                </h5>
-                <div className="d-flex justify-content-between my-2">
-                  <div>{item.price} EGP</div>
-                  <div>
-                    <i className="fa-solid fa-star rating-color"></i>
-                    {item.ratingsAverage}
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Wishlist</title>
+      </Helmet>
+      <div className="main-margin container-fluid">
+        <div className="row g-2">
+          {data?.data.map((item) => {
+            return (
+              <div
+                className="col-md-4 col-lg-2 product cursor-pointer rounded-3 p-4 position-relative mx-2"
+                key={item._id}
+              >
+                <Link to={`/product-details/${item._id}`}>
+                  <img
+                    src={item.imageCover}
+                    className="w-100"
+                    alt="Product_png"
+                  />
+                  <span className="text-main font-sm mt-2">
+                    {item.category.name}
+                  </span>
+                  <h5 className="fw-bold my-2">
+                    {item.title.split(" ").slice(0, 3).join(" ")}
+                  </h5>
+                  <div className="d-flex justify-content-between my-2">
+                    <div>{item.price} EGP</div>
+                    <div>
+                      <i className="fa-solid fa-star rating-color"></i>
+                      {item.ratingsAverage}
+                    </div>
                   </div>
+                </Link>
+                <div className="d-flex justify-content-between align-content-center">
+                  <button
+                    className="btn text-danger"
+                    onClick={() => removeListItem(item._id)}
+                  >
+                    <i className="fa-solid fa-heart fa-lg"></i>
+                  </button>
+                  <button
+                    className="btn bg-main text-white "
+                    disabled={!btnLoading}
+                    onClick={() => addProductTCart(item._id)}
+                  >
+                    {btnLoading ? (
+                      "Add to cart"
+                    ) : (
+                      <i className="fa-solid fa-spinner fa-spin"></i>
+                    )}
+                  </button>
                 </div>
-              </Link>
-              <div className="d-flex justify-content-between align-content-center">
-                <button
-                  className="btn text-danger"
-                  onClick={() => removeListItem(item._id)}
-                >
-                  <i className="fa-solid fa-heart fa-lg"></i>
-                </button>
-                <button
-                  className="btn bg-main text-white "
-                  disabled={!btnLoading}
-                  onClick={() => addProductTCart(item._id)}
-                >
-                  {btnLoading ? (
-                    "Add to cart"
-                  ) : (
-                    <i className="fa-solid fa-spinner fa-spin"></i>
-                  )}
-                </button>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

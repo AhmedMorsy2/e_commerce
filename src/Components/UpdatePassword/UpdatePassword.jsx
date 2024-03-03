@@ -3,6 +3,7 @@ import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function UpdatePassword() {
   let navigate = useNavigate();
@@ -46,55 +47,61 @@ export default function UpdatePassword() {
     },
   });
   return (
-    <div className="vh-100 d-flex justify-content-center align-content-center flex-wrap">
-      <div className="container">
-        <div className="m-auto w-75 brdrshdow p-4">
-          <h2>Change Password</h2>
-          <form onSubmit={register.handleSubmit}>
-            <label htmlFor="currentPassword"> Old Password </label>
-            <input
-              type="password"
-              name="currentPassword"
-              id="currentPassword"
-              className="form-control my-2"
-              onChange={register.handleChange}
-            />
-            <label htmlFor="password">New Password </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              className="form-control my-2"
-              onChange={register.handleChange}
-            />
-            {register.errors.password && register.touched.password ? (
-              <div className="alert alert-danger">
-                {register.errors.password}
-              </div>
-            ) : (
-              ""
-            )}
-            <label htmlFor="rePassword"> Retype password </label>
-            <input
-              type="password"
-              name="rePassword"
-              id="rePassword"
-              className="form-control my-2"
-              onChange={register.handleChange}
-            />
-            {register.errors.rePassword && register.touched.rePassword ? (
-              <div className="alert alert-danger">
-                {register.errors.rePassword}
-              </div>
-            ) : (
-              ""
-            )}
-            <button type="submit" className="btn bg-main text-white mt-3">
-              Update Password
-            </button>
-          </form>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Change Password</title>
+      </Helmet>
+      <div className="vh-100 d-flex justify-content-center align-content-center flex-wrap">
+        <div className="container">
+          <div className="m-auto w-75 brdrshdow p-4">
+            <h2>Change Password</h2>
+            <form onSubmit={register.handleSubmit}>
+              <label htmlFor="currentPassword"> Old Password </label>
+              <input
+                type="password"
+                name="currentPassword"
+                id="currentPassword"
+                className="form-control my-2"
+                onChange={register.handleChange}
+              />
+              <label htmlFor="password">New Password </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                className="form-control my-2"
+                onChange={register.handleChange}
+              />
+              {register.errors.password && register.touched.password ? (
+                <div className="alert alert-danger">
+                  {register.errors.password}
+                </div>
+              ) : (
+                ""
+              )}
+              <label htmlFor="rePassword"> Retype password </label>
+              <input
+                type="password"
+                name="rePassword"
+                id="rePassword"
+                className="form-control my-2"
+                onChange={register.handleChange}
+              />
+              {register.errors.rePassword && register.touched.rePassword ? (
+                <div className="alert alert-danger">
+                  {register.errors.rePassword}
+                </div>
+              ) : (
+                ""
+              )}
+              <button type="submit" className="btn bg-main text-white mt-3">
+                Update Password
+              </button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

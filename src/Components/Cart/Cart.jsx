@@ -3,6 +3,7 @@ import { cartContext } from "../../Context/CartContextProvider";
 import Loading from "../Loading/Loading";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function Cart() {
   let { setCounter, getCart, deleteItem, updateQuantity, deleteCart } =
@@ -57,6 +58,10 @@ export default function Cart() {
     );
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Cart</title>
+      </Helmet>
       <div className="container main-margin bg-main-light p-4 rounded-3">
         <h2>Shop Cart:</h2>
         <p className="text-main my-2">

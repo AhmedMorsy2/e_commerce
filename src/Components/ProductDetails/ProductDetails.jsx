@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { cartContext } from "../../Context/CartContextProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 export default function ProductDetails() {
   let id = useParams();
   let {
@@ -73,6 +74,10 @@ export default function ProductDetails() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Product Details</title>
+      </Helmet>
       <div className="container vh-100 d-flex justify-content-center align-content-center flex-wrap">
         <div className="row main-margin">
           {token ? (

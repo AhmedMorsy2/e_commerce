@@ -22,6 +22,9 @@ import SpecificBrand from "./Components/SpecificBrand/SpecificBrand";
 import { ToastContainer } from "react-toastify";
 import UsersLayout from "./Components/Layouts/UsersLayout";
 import UpdatePassword from "./Components/UpdatePassword/UpdatePassword";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
+import VerifyCode from "./Components/VerifyCode/VerifyCode";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 
 export default function App() {
   let router = createHashRouter([
@@ -77,6 +80,9 @@ export default function App() {
       children: [
         { path: "signup", element: <Signup /> },
         { path: "signin", element: <Signin /> },
+        { path: "forgetpassword", element: <ForgetPassword /> },
+        { path: "verifycode", element: <VerifyCode /> },
+        { path: "resetpassword", element: <ResetPassword /> },
         { path: "*", element: <PageNotFound /> },
       ],
     },
@@ -91,6 +97,10 @@ export default function App() {
               <UpdatePassword />
             </ProtectedRoutes>
           ),
+        },
+        {
+          path: "*",
+          element: <PageNotFound />,
         },
       ],
     },

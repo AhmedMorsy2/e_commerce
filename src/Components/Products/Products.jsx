@@ -5,10 +5,11 @@ import Product from "../Product/Product";
 import { useQuery } from "react-query";
 import url from "../../api";
 import Pagination from "react-js-pagination";
+import { Helmet } from "react-helmet";
 
 export default function Products() {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 18; 
+  const itemsPerPage = 18;
 
   function getProduct() {
     return axios.get(url + "products");
@@ -34,6 +35,10 @@ export default function Products() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Products</title>
+      </Helmet>
       <div className="container-fluid main-margin">
         <div className="row g-2">
           {currentItems.map((item) => (
