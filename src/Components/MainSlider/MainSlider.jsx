@@ -19,7 +19,6 @@ export default function MainSlider() {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 6000,
-    innerHeight: 500,
   };
   return (
     <>

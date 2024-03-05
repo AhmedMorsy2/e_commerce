@@ -16,6 +16,7 @@ export default function ProductDetails() {
     deleteProductFromWishList,
   } = useContext(cartContext);
   const token = localStorage.getItem("token");
+
   let [btnLoading, setBtnLoading] = useState(true);
   let [product, setProduct] = useState({});
   let [loading, setLoading] = useState(true);
@@ -58,7 +59,7 @@ export default function ProductDetails() {
       toast.error(
         <div>
           <span> Product Removed from wishlist</span>
-          <i class="fa-solid fa-heart-crack ms-2"></i>
+          <i className="fa-solid fa-heart-crack ms-2"></i>
         </div>
       );
       setWishListCounter(list.count);
