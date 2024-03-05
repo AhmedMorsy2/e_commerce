@@ -122,8 +122,8 @@ export default function CartContextProvider({ children }) {
   let [counter, setCounter] = useState(0);
   let [wishListCounter, setWishListCounter] = useState(0);
   let [wislist, setWishlist] = useState([]);
+  let [showPassword, setShowPassword] = useState(false);
 
-  
   return (
     <>
       <cartContext.Provider
@@ -142,7 +142,9 @@ export default function CartContextProvider({ children }) {
           getWishList,
           deleteProductFromWishList,
           wislist,
-          setWishlist
+          setWishlist,
+          showPassword,
+          setShowPassword,
         }}
       >
         {children}

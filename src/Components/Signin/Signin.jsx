@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
-// import Loading from "../Loading/Loading";
-
+import { cartContext } from "../../Context/CartContextProvider";
 export default function Signin() {
   let [errMsg, setErrMsg] = useState("");
   let [loading, setLoading] = useState(true);
+  let { showPassword, setShowPassword } = useContext(cartContext);
   let navigate = useNavigate();
   function sendDataToApi(values) {
     setLoading(false);
@@ -34,6 +34,9 @@ export default function Signin() {
       sendDataToApi(values);
     },
   });
+  function makePasswordVisible() {
+    setShowPassword(!showPassword);
+  }
   return (
     <>
       <Helmet>
@@ -45,38 +48,55 @@ export default function Signin() {
           <div className="w-75 m-auto my-5 brdrshdow p-4 ">
             <h3>Sign In:</h3>
             <form onSubmit={register.handleSubmit}>
-              <label htmlFor="email">E-mail</label>
-              <input
-                type="text"
-                name="email"
-                id="email"
-                className="form-control my-2"
-                onChange={register.handleChange}
-                onBlur={register.handleBlur}
-              />
-              {register.errors.email && register.touched.email ? (
-                <div className="alert alert-danger">
-                  {register.errors.email}
-                </div>
-              ) : (
-                ""
-              )}
-              <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="form-control my-2"
-                onChange={register.handleChange}
-                onBlur={register.handleBlur}
-              />
-              {register.errors.password && register.touched.password ? (
-                <div className="alert alert-danger">
-                  {register.errors.password}
-                </div>
-              ) : (
-                ""
-              )}
+              <div className="mb-3">
+                <label htmlFor="email">E-mail</label>
+                <input
+                  type="text"
+                  name="email"
+                  id="email"
+                  className="form-control my-2"
+                  onChange={register.handleChange}
+                  onBlur={register.handleBlur}
+                />
+                {register.errors.email && register.touched.email ? (
+                  <div className="alert alert-danger">
+                    {register.errors.email}
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="d-flex justify-content-between align-content-center  mt-2">
+                <label htmlFor="password">Password</label>
+                <p className="text-center font-sm">
+                  <Link className="text-main ms-1" to="/forgetpassword">
+                    Forget Password ?
+                  </Link>
+                </p>
+              </div>
+              <div className="position-relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  className="form-control "
+                  onChange={register.handleChange}
+                  onBlur={register.handleBlur}
+                />
+                {register.errors.password && register.touched.password ? (
+                  <div className="alert alert-danger">
+                    {register.errors.password}
+                  </div>
+                ) : (
+                  ""
+                )}
+                <i
+                  className={`position-absolute passicon fa-regular ${
+                    showPassword ? "fa-eye-slash" : "fa-eye"
+                  }`}
+                  onClick={() => makePasswordVisible()}
+                ></i>
+              </div>
               <p className="text-center">
                 Don't have e-mail ?
                 <Link
@@ -84,11 +104,6 @@ export default function Signin() {
                   to="/Signup"
                 >
                   Signup
-                </Link>
-              </p>
-              <p className="text-center">
-                <Link className="text-main ms-1" to="/forgetpassword">
-                  Forget Password
                 </Link>
               </p>
               {errMsg ? (

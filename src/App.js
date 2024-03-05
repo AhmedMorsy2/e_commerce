@@ -64,7 +64,7 @@ export default function App() {
         },
         { path: "/categories", element: <Categories /> },
         {
-          path: "/allorders",
+          path: "allorders",
           element: (
             <ProtectedRoutes>
               <AllOrders />

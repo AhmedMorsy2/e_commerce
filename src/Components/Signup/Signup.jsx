@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { cartContext } from "../../Context/CartContextProvider";
 export default function Signup() {
   let [errMsg, setErrMsg] = useState("");
   let [loading, setLoading] = useState(true);
+  let { setShowPassword, showPassword } = useContext(cartContext);
   let navigate = useNavigate();
   function sendDataToApi(values) {
     setLoading(false);
@@ -36,6 +38,9 @@ export default function Signup() {
     });
     return schema;
   }
+  function makePasswordVisible() {
+    setShowPassword(!showPassword);
+  }
 
   let register = useFormik({
     initialValues: {
@@ -56,7 +61,7 @@ export default function Signup() {
         <meta charSet="utf-8" />
         <title>Signup</title>
       </Helmet>
-      <div className="vh-100 d-flex justify-content-center align-content-center flex-wrap">
+      <div className="vh-100 d-flex justify-content-center align-content-center flex-wrap form-margin">
         <div className="container-fluid  ">
           <div className="w-75 m-auto my-5 brdrshdow p-4">
             <h3>Register Now:</h3>
@@ -71,10 +76,7 @@ export default function Signup() {
                 onBlur={register.handleBlur}
               />
               {register.errors.name && register.touched.name ? (
-                <div className="alert alert-danger">
-                  {" "}
-                  {register.errors.name}{" "}
-                </div>
+                <div className="alert alert-danger">{register.errors.name}</div>
               ) : (
                 ""
               )}
@@ -90,39 +92,42 @@ export default function Signup() {
               />
               {register.errors.email && register.touched.email ? (
                 <div className="alert alert-danger">
-                  {" "}
-                  {register.errors.email}{" "}
+                  {register.errors.email}
                 </div>
               ) : (
                 ""
               )}
-
               <label htmlFor="password">Password</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="form-control my-2 position-relative"
-                onChange={register.handleChange}
-                onBlur={register.handleBlur}
-              />
+              <div className=" position-relative ">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  className="form-control my-2"
+                  onChange={register.handleChange}
+                />
+                <i
+                  className={`position-absolute passicon fa-regular ${
+                    showPassword ? "fa-eye-slash" : "fa-eye"
+                  }`}
+                  onClick={() => makePasswordVisible()}
+                ></i>
+              </div>
               {register.errors.password && register.touched.password ? (
                 <div className="alert alert-danger">
-                  {" "}
-                  {register.errors.password}{" "}
+                  {register.errors.password}
                 </div>
               ) : (
                 ""
               )}
 
-              <label htmlFor="rePassword">rePassword</label>
+              <label htmlFor="rePassword">Retype Password</label>
               <input
                 type="password"
                 name="rePassword"
                 id="rePassword"
                 className="form-control my-2"
                 onChange={register.handleChange}
-                onBlur={register.handleBlur}
               />
               {register.errors.rePassword && register.touched.rePassword ? (
                 <div className="alert alert-danger">

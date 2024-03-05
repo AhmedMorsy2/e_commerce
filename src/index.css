@@ -99,3 +99,8 @@ a:hover {
   color: #fff;
   border-color: transparent;
 }
+
+.passicon {
+  right: 15px;
+  top: 11.8px;
+}
