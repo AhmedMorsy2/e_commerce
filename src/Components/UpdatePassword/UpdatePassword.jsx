@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+// import { cartContext } from "../../Context/CartContextProvider";
 
 export default function UpdatePassword() {
   let navigate = useNavigate();
+  // let { setShowPassword, showPassword } = useContext(cartContext);
+  let [showPassword, setShowPassword] = useState(false);
+  let [newPassword, setNewPassword] = useState(false);
   function sendDataToApi(values) {
     axios
       .put(
@@ -46,6 +50,14 @@ export default function UpdatePassword() {
       sendDataToApi(values);
     },
   });
+
+  function makePasswordVisible() {
+    setShowPassword(!showPassword);
+  }
+
+  function makeNewVisiple() {
+    setNewPassword(!newPassword);
+  }
   return (
     <>
       <Helmet>
@@ -58,28 +70,44 @@ export default function UpdatePassword() {
             <h2>Change Password</h2>
             <form onSubmit={register.handleSubmit}>
               <label htmlFor="currentPassword"> Old Password </label>
-              <input
-                type="password"
-                name="currentPassword"
-                id="currentPassword"
-                className="form-control my-2"
-                onChange={register.handleChange}
-              />
+              <div className="position-relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="currentPassword"
+                  id="currentPassword"
+                  className="form-control my-2"
+                  onChange={register.handleChange}
+                />
+                <i
+                  className={`position-absolute passicon fa-regular ${
+                    showPassword ? "fa-eye-slash" : "fa-eye"
+                  }`}
+                  onClick={() => makePasswordVisible()}
+                ></i>
+              </div>
               <label htmlFor="password">New Password </label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                className="form-control my-2"
-                onChange={register.handleChange}
-              />
-              {register.errors.password && register.touched.password ? (
-                <div className="alert alert-danger">
-                  {register.errors.password}
-                </div>
-              ) : (
-                ""
-              )}
+              <div className="position-relative">
+                <input
+                  type={newPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  className="form-control my-2"
+                  onChange={register.handleChange}
+                />
+                {register.errors.password && register.touched.password ? (
+                  <div className="alert alert-danger">
+                    {register.errors.password}
+                  </div>
+                ) : (
+                  ""
+                )}
+                <i
+                  className={`position-absolute passicon fa-regular ${
+                    newPassword ? "fa-eye-slash" : "fa-eye"
+                  }`}
+                  onClick={() => makeNewVisiple()}
+                ></i>
+              </div>
               <label htmlFor="rePassword"> Retype password </label>
               <input
                 type="password"

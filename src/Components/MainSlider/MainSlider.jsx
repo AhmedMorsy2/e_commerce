@@ -7,7 +7,6 @@ import slider3 from "../../assets/images/slider3.png";
 import slider4 from "../../assets/images/slider4.png";
 import slider5 from "../../assets/images/slider5.png";
 import slider6 from "../../assets/images/slider6.png";
-import { Helmet } from "react-helmet";
 
 export default function MainSlider() {
   var settings = {
@@ -22,10 +21,6 @@ export default function MainSlider() {
   };
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Home</title>
-      </Helmet>
       <div className="container-fluid form-margin ">
         <Slider {...settings}>
           <img src={slider1} alt="" className="w-100" />

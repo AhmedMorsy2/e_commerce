@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import Slider from "react-slick";
 import url from "../../api";
 
+
 export default function CategoriesSlider() {
   function getCategories() {
     return axios.get(url + "categories");
@@ -22,16 +23,16 @@ export default function CategoriesSlider() {
   };
 
   return (
-    <div className="my-5 container-fluid">
-      <h3>Shop Populer Categories:</h3>
-      <Slider {...settings}>
-        {data?.data.data.map((item) => (
-          <div key={item._id} className="cursor-pointer px-1">
-            <img src={item.image} alt="" className="w-100" height={250} />
-            <p className="fw-bold">{item.name}</p>
-          </div>
-        ))}
-      </Slider>
-    </div>
+      <div className="my-5 container-fluid">
+        <h3>Shop Populer Categories:</h3>
+        <Slider {...settings}>
+          {data?.data.data.map((item) => (
+            <div key={item._id} className="cursor-pointer px-1">
+              <img src={item.image} alt="" className="w-100" height={250} />
+              <p className="fw-bold">{item.name}</p>
+            </div>
+          ))}
+        </Slider>
+      </div>
   );
 }
