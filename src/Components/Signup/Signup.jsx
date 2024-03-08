@@ -61,7 +61,7 @@ export default function Signup() {
         <meta charSet="utf-8" />
         <title>Signup</title>
       </Helmet>
-      <div className="vh-100 d-flex justify-content-center align-content-center flex-wrap form-margin">
+      <div className="vh-100 d-flex justify-content-center align-content-center flex-wrap">
         <div className="container-fluid  ">
           <div className="w-75 m-auto my-5 brdrshdow p-4">
             <h3>Register Now:</h3>

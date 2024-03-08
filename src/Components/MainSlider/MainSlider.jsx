@@ -23,12 +23,12 @@ export default function MainSlider() {
     <>
       <div className="container-fluid form-margin ">
         <Slider {...settings}>
-          <img src={slider1} alt="" className="w-100" />
-          <img src={slider2} alt="" className="w-100" />
-          <img src={slider3} alt="" className="w-100" />
-          <img src={slider4} alt="" className="w-100" />
-          <img src={slider5} alt="" className="w-100" />
-          <img src={slider6} alt="" className="w-100" />
+          <img src={slider1} alt="" className="w-100 img-slider" />
+          <img src={slider2} alt="" className="w-100 img-slider" />
+          <img src={slider3} alt="" className="w-100 img-slider" />
+          <img src={slider4} alt="" className="w-100 img-slider" />
+          <img src={slider5} alt="" className="w-100 img-slider" />
+          <img src={slider6} alt="" className="w-100 img-slider" />
         </Slider>
       </div>
     </>

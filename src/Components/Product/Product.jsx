@@ -72,7 +72,7 @@ export default function Product({ item }) {
     <>
       {token ? (
         <>
-          <div className="col-sm-6 col-md-3 col-lg-2">
+          <div className="col-sm-6 col-md-4 col-lg-2">
             <div className="product cursor-pointer rounded-3 p-4 position-relative ">
               <Link to={`/product-details/${item._id}`}>
                 <img

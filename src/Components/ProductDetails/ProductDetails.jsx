@@ -79,24 +79,24 @@ export default function ProductDetails() {
         <meta charSet="utf-8" />
         <title>Product Details</title>
       </Helmet>
-      <div className="container vh-100 d-flex justify-content-center align-content-center flex-wrap">
+      <div className="container main-margin  d-flex justify-content-center align-content-center flex-wrap">
         <div className="row main-margin">
           {token ? (
             <>
-              <div className="col-md-3 position-relative">
+              <div className="col-md-4 col-lg-3 position-relative">
                 <button
-                  className={`btn text-main ${isAdded ? "text-danger " : ""}`}
+                  className={`btn  ${isAdded ? "text-danger " : "text-main"}`}
                   onClick={() =>
                     isAdded
                       ? deleteFromList(product._id)
                       : addToWish(product._id)
-                  }
+                  }s
                 >
                   <i className="fa-solid fa-heart fa-xl"></i>
                 </button>
                 <img src={product.imageCover} className="w-100" alt="" />
               </div>
-              <div className="col-md-9">
+              <div className="col-md-8 col-lg-9">
                 <div className="title">
                   <h2>{product.title}</h2>
                   <p className="mt-3">{product.description}</p>
