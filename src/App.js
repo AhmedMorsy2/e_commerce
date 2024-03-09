@@ -1,5 +1,5 @@
 import React from "react";
-import { RouterProvider, createHashRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Offline } from "react-detect-offline";
 import MainLayout from "../src/Components/Layouts/MainLayout";
@@ -27,7 +27,7 @@ import VerifyCode from "./Components/VerifyCode/VerifyCode";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 
 export default function App() {
-  let router = createHashRouter([
+  let router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout />,
@@ -64,7 +64,7 @@ export default function App() {
         },
         { path: "/categories", element: <Categories /> },
         {
-          path: "allorders",
+          path: "/allorders",
           element: (
             <ProtectedRoutes>
               <AllOrders />

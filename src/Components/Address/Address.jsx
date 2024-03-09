@@ -26,7 +26,7 @@ export default function Address() {
 
   return (
     <>
-      <div className="container form-margin">
+      <div className="container vh-100 d-flex justify-content-center align-content-center flex-wrap">
         <div className="w-75 m-auto my-5 brdrshdow p-4">
           <h3>Address:</h3>
           <form onSubmit={userAddress.handleSubmit}>
