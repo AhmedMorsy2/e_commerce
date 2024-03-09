@@ -97,7 +97,7 @@ export default function Signin() {
                   onClick={() => makePasswordVisible()}
                 ></i>
               </div>
-              <p className="text-center">
+              <p className="text-center mt-2">
                 Don't have e-mail ?
                 <Link
                   className="text-main text-decoration-underline ms-1"
@@ -113,7 +113,7 @@ export default function Signin() {
               )}
 
               <button
-                className="btn bg-main text-white mt-3"
+                className="btn bg-main text-white mt-2"
                 type="submit"
                 disabled={!(register.dirty && register.isValid)}
               >

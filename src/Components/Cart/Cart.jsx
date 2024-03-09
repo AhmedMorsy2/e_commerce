@@ -65,7 +65,7 @@ export default function Cart() {
       <div className="container main-margin bg-main-light p-4 rounded-3">
         <h2>Shop Cart:</h2>
         <p className="text-main my-2">
-          Total Cart Price: {data?.data.totalCartPrice} EPG
+          Total Cart Price: {data?.data.totalCartPrice} EPG{" "}
         </p>
         {data?.data.products.map((item) => {
           return (

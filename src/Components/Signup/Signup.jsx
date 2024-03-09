@@ -107,7 +107,7 @@ export default function Signup() {
                   onChange={register.handleChange}
                 />
                 <i
-                  className={`position-absolute passicon fa-regular ${
+                  className={`cursor-pointer position-absolute passicon fa-regular ${
                     showPassword ? "fa-eye-slash" : "fa-eye"
                   }`}
                   onClick={() => makePasswordVisible()}
