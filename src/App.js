@@ -1,5 +1,5 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Offline } from "react-detect-offline";
 import MainLayout from "../src/Components/Layouts/MainLayout";
@@ -27,7 +27,7 @@ import VerifyCode from "./Components/VerifyCode/VerifyCode";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 
 export default function App() {
-  let router = createBrowserRouter([
+  let router = createHashRouter([
     {
       path: "/",
       element: <MainLayout />,
