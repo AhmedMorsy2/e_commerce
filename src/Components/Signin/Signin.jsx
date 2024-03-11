@@ -1,13 +1,12 @@
 import axios from "axios";
 import { useFormik } from "formik";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
-import { cartContext } from "../../Context/CartContextProvider";
 export default function Signin() {
   let [errMsg, setErrMsg] = useState("");
   let [loading, setLoading] = useState(true);
-  let { showPassword, setShowPassword } = useContext(cartContext);
+  let [showPassword, setShowPassword] = useState(false);
   let navigate = useNavigate();
   function sendDataToApi(values) {
     setLoading(false);
