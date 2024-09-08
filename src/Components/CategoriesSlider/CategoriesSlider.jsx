@@ -3,12 +3,13 @@ import React from "react";
 import { useQuery } from "react-query";
 import Slider from "react-slick";
 import url from "../../api";
+import CategorySliderSkeleton from "../Skeletons/CategorySliderSkeleton";
 
 export default function CategoriesSlider() {
   function getCategories() {
     return axios.get(url + "categories");
   }
-  let { data } = useQuery("getCategories", getCategories);
+  let { data, isLoading } = useQuery("getCategories", getCategories);
 
   var settings = {
     dots: true,
@@ -20,6 +21,8 @@ export default function CategoriesSlider() {
     autoplay: true,
     autoplaySpeed: 3000,
   };
+
+  if (isLoading) return <CategorySliderSkeleton />;
 
   return (
     <div className="my-5 container-fluid">

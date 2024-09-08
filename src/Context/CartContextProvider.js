@@ -114,7 +114,7 @@ function payOrder(cartId, shippingAddress) {
         },
       }
     )
-    .then(({ data }) => data)
+    .then(({ data }) => data )
     .catch((err) => err);
 }
 
@@ -122,7 +122,6 @@ export default function CartContextProvider({ children }) {
   let [counter, setCounter] = useState(0);
   let [wishListCounter, setWishListCounter] = useState(0);
   let [wislist, setWishlist] = useState([]);
-
 
   return (
     <>

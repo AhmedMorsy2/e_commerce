@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import url from "../../api";
 import Brand from "../Brand/Brand";
-import Loading from "../Loading/Loading";
 import { useQuery } from "react-query";
 import Pagination from "react-js-pagination";
 import { Helmet } from "react-helmet";
+import BrandsSkeleton from "../Skeletons/BrandsSkeleton";
 
 export default function Brands() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +17,7 @@ export default function Brands() {
   let { data, isLoading } = useQuery("getBrands", getBrands);
   let brands = data?.data.data;
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <BrandsSkeleton />;
   if (brands) {
     brands.sort((brand1, brand2) => {
       return brand1.name.localeCompare(brand2.name);

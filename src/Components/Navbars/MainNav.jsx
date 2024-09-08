@@ -12,6 +12,7 @@ export default function MainNav() {
     wishListCounter,
     getWishList,
   } = useContext(cartContext);
+  
   let token = localStorage.getItem("token");
 
   useEffect(() => {

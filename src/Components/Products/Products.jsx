@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
-import Loading from "../Loading/Loading";
 import Product from "../Product/Product";
+import ProductSkeleton from "../Skeletons/ProductSkeleton";
 import { useQuery } from "react-query";
 import url from "../../api";
 import Pagination from "react-js-pagination";
@@ -17,7 +17,17 @@ export default function Products() {
 
   const { data, isLoading } = useQuery("getProduct", getProduct);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) {
+    return (
+      <div className="container-fluid main-margin">
+        <div className="row g-2">
+          {[...Array(itemsPerPage).keys()].map((_, index) => (
+            <ProductSkeleton key={index} />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   let products = data?.data.data;
 
